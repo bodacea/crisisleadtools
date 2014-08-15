@@ -1,0 +1,35 @@
+Skypechat message lists can be generated in 4 ways: 
+1) A user cut and pastes the messages in the skypechat into a text file
+2) The system converts a cut-and-paste skypechat into a csv file
+3) The system downloads a Skype message list from the Skype api
+4) The system converts a Skype message list into a csv file.
+
+It makes sense for the generated CSV files to have the same format. 
+This is: 
+Row 1: headers
+Row2 to n: [skypeid, Full name, timestamp, message, message type]
+
+Cut and paste generated CSV messages files will not have skypeids in them, but will have full names. Analysing these files is not as accurate as analysing files created through the Skype API, because users can change their full names at any time (but can't as easily change their Skypeids?  Perhaps this is what the "alias" file in Skype is for?). 
+
+Skype user lists can be generated in 3 ways:
+1) A user hand-edits a csv list of skype userids and real names (where available).
+2) The system downloads a Skype user list from the Skype api.
+3) The system converts a Skype user list into a csv file. 
+
+Hand-generated CSV files currently have the form: 
+Row 1 to n: [skypename, numcontacts, location, country]
+
+The generated CSV user files should have the same format. This is: 
+Row 1: headers
+Row2 to n: [handle, displayname, fullname, about, moodtext, richmoodtext, sex, homepage, phonehome, language, languagecode, numberofauthbuddies, lastonline, country, countrycode, province, city, timezone]
+Details available through the Skype API that aren't used in these files are: [Aliases, Birthday, buddystatus]. Buddystatus shows whether a skype member is connected to the current user - this is used later in automatic generation of friend requests before adding a list of users to a skypechat. 
+
+Skype chatrooms have a number of features that need to be captured. These include message lists and user lists; other features that are useful in the codebase are FriendlyName (the name allocated to the chat), owner (?don't know the exact name for this), id (this is a numerical value allocated to each chat that a user is connected to, and is likely to change on every connection into the Skype API). 
+
+
+
+
+
+
+
+

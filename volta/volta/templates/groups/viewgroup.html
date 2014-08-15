@@ -1,0 +1,69 @@
+{% extends "groups/groups.html" %}
+{% load url from future %}
+
+{% comment %}
+
+Display a Group
+
+{% endcomment %}
+
+{% block title %}
+Group {{ groupdata.name }}
+{% endblock %}
+
+{% block content %}
+<table border="1">
+	<tr>
+		<td>Group owner: {{ groupdata.ownername }}</td>
+		<td>Parent group: {{ groupdata.parentname }}</td>
+	</tr>
+	<tr>
+		<td span="2">Subgroups: {{ groupdata.subgroups }}</td>
+	</tr>
+	<tr>
+		<td span="2">Communications channels: {{ groupdata.channelnames }}</td>
+	</tr>
+</table>
+
+Group members:
+
+{% if groupdata %}
+	<table border="0" width="100%">
+	<tr>
+		<td>Combobox</td>
+		<td>Add new members</td>
+		<td>Search for... in Combobox icon</td>
+	</tr>
+	</table>
+	<table class="table table-striped table-condensed table-bordered">
+	<tr>
+		<th>Select</th>
+		<th>Name</th>
+		<th>SkypeId</th>
+		<th>NingId</th>
+		<th>Googleid</th>
+		<th>Email</th>
+		<th>Membership</th>
+		<th>Joined</th>
+		<th>Details</th>
+	</tr>
+	{% for row in groupdata.members %}
+		<tr>
+			<td> </td>
+			<td>{{ member.name }}</td>
+			<td>{{ member.skypeid }}</td>
+			<td>{{ member.ningid }}</td>
+			<td>{{ member.googleid }}</td>
+			<td>{{ member.email }}</td>
+			<td>{{ member.membership }}</td>
+			<td>{{ member.joined }}</td>
+			<td>{{ member.details }}</td>
+		</tr>
+	{% endfor %}
+	</table>
+{% else %}
+	<p>This group doesn't have any members yet.</p>
+	Add new members
+{% endif %}
+
+{% endblock %}

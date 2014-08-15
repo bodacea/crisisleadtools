@@ -1,0 +1,25 @@
+{% extends "channels/channels.html" %}
+{% load url from future %}
+
+{% comment %}
+
+Main page for Channels
+
+{% endcomment %}
+
+{% block title %}
+Groups
+{% endblock %}
+
+{% block content %}
+<h2>Welcome, {{ user.username }}, to your Communications Channel tools</h2>
+
+<p>Things you can do with channels: </p>
+	<ul>
+	<li><a href="{% url 'summarise' %}">Summarise a Skypechat</a></li>
+	<li><a href="{% url 'createremote' %}">Create a new channel in Skype</a></li>
+	<li><a href="{% url 'friendall' %}">Friend everyone on a list of Skype ids</a></li>	
+	</ul>
+</p>
+
+{% endblock %}

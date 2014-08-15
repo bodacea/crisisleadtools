@@ -1,0 +1,31 @@
+{% extends "channels/channels.html" %}
+{% load url from future %}
+
+{% comment %}
+
+Create a Skypechat Channel
+
+{% endcomment %}
+
+{% block title %}
+Create a Skypechat channel
+{% endblock %}
+
+{% block content %}
+<form enctype="multipart/form-data" method="post" action="{% url 'createremote' %}" method="post">{% csrf_token %}
+<h2>Create a Skypechat</h2>
+<ol>
+<li>First, make sure you're logged into Skype</li><br>
+<li>Give the Skypechat a name: {{ form.chatname }}</li><br>
+<li>Add an invitation message, if you want to: {{ form.invitemessage }} </li><br>
+<li>And add a list of Skypeids to add to the chat, either:</li><br>
+<ul>
+<li>As a list separated by commas: {{ form.skypeidlist }}</li><br>
+<li>Or as a CSV file, with a header row, and skypeids in its first column: 
+{{ form.skypeidsfile }}</li><br>
+</ul>
+<li>Then press this button: <input type="submit" value="Create Skypechat" /></li>
+</ol>
+</form>
+
+{% endblock %}

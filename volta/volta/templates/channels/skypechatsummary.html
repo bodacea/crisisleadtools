@@ -1,0 +1,50 @@
+{% extends "channels/channels.html" %}
+{% load url from future %}
+
+{% comment %}
+
+Skypechat Channel summary
+
+{% endcomment %}
+
+{% block title %}
+Skypechat channel summary
+{% endblock %}
+
+{% block content %}
+
+{% if results %}
+	<h2>Skype file "{{ results.filename }}"</h2>
+	<p><u>Member contributions:</u>
+	<table border="1">
+	<tr>
+	<th>Skype name</th>
+	<th>Number of messages</th>
+	</tr>
+	{% for pers in results.contribs %}
+		<tr>
+			<td>{{ pers.0 }}</td>
+			<td>{{ pers.1.num_messages }}</td>
+		</tr>
+	{% endfor %}
+	</table>
+	
+	<p><u>Most used words (excluding stopwords):</u>
+	<table border="1">
+	<tr>
+	<th>Word</th>
+	<th>Count</th>
+	</tr>
+	{% for token, freq in results.texthist.items %}
+		<tr>
+			<td>{{ token }}</td>
+			<td>{{ freq }}</td>
+		</tr>
+	{% endfor %}
+	</table>
+	
+{% else %}
+	<p>No data is available.</p>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% if results %}
+	<h2>Skypechat "{{ results.skypechatname }}"</h2>
+	Have sent friend invites to these people, but couldn't add them to the chat:
+	<table border="1">
+	<tr>
+	<th>Skype id</th>
+	</tr>
+	{% for pers in results.newbuddies %}
+		<tr>
+			<td>{{ pers }}</td>
+		</tr>
+	{% endfor %}
+	</table>
+{% else %}
+	<p>No data is available.</p>
+{% endif %}

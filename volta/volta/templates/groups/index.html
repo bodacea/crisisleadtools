@@ -1,0 +1,42 @@
+{% extends "groups/groups.html" %}
+{% load url from future %}
+
+{% comment %}
+
+Main page for Groups
+
+{% endcomment %}
+
+{% block title %}
+Groups
+{% endblock %}
+
+{% block content %}
+<h2><center>Your Groups: </center></h2>
+<table border="0" width="100%">
+<tr>
+	<td>Combobox Go</td>
+	<td><a href="{% url 'groupsandbox' %}">Groups Sandbox</a></td>
+	<td><a href="{% url 'addgroup' %}">Add a Group</a></td>
+</tr>
+</table>
+{% if groupdata %}
+	<table class="table table-striped table-condensed table-bordered" width="100%" border="1">
+	<tr>
+		<th>Group</th>
+		<th>Parent group(s)</th>
+		<th>Communications Channels</th>
+	</tr>
+	{% for row in groupdata.group_list %}
+		<tr>
+			<td>{{ row.name }}</td>
+			<td>{{ row.parentgroup }}</td>
+			<td> </td>
+		</tr>
+	{% endfor %}
+	</table>
+{% else %}
+	<p>You don't own any groups yet.</p>
+{% endif %}
+
+{% endblock %}

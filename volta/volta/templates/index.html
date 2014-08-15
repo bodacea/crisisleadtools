@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% comment %}
+
+Main page for VOLTA system
+
+{% endcomment %}
+
+{% block head %}
+	<title>VOLTA Online Volunteer Management System </title>
+{% endblock %}
+
+{% block body %}
+
+Welcome to VOLTA, the online Volunteer management system, designed for intelligent crowdsourcing. 
+
+{% if user.is_authenticated %}
+
+	<p>You're logged in!
+
+{% else %}
+
+	<p>Please <a href="/login/">Log in</a> to continue. 
+
+{% endif %}
+	
+{% endblock %}

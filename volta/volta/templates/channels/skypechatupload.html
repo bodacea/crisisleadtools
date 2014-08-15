@@ -1,0 +1,42 @@
+{% extends "channels/channels.html" %}
+{% load url from future %}
+
+{% comment %}
+
+Summarise a Skypechat Channel
+
+{% endcomment %}
+
+{% block title %}
+Summarise a Skypechat channel
+{% endblock %}
+
+{% block content %}
+
+<form enctype="multipart/form-data" method="post" action=""{% url 'summarise' %}"" method="post">{% csrf_token %}
+<h2>Summarise a Skypechat channel</h2>
+<table border="1">
+<tr>
+<td width="50%" valign="top">
+<h3>Cut and Paste method:</h3>
+Use this if you want to analyse files when you're offline. 
+<ol>
+<li>First, start Skype and open the Skypechat that you want analysed.</li><br>
+<li>Then select all the messages in the skypechat, and paste them into a file. 
+If you click on the skypechat window, type "ctrl-A", open a file and type "Ctrl-V", that should do it. </li><br>
+<li>Then select the file here: {{ form.skypechatfile }}</li><br>
+<li>And press this button: <input type="submit" value="Analyse this Skypechat file!" /></li>
+</ol>
+</td>
+<td valign="top">
+<h3>Direct method:</h3>
+Use this if you're connected to Skype and want more information!
+<ol>
+<li>Carefully type the name of the Skypechat here: {{ form.skypechannel }}</li><br>
+<li>And press this button: <input type="submit" value="Analyse this Skypechat!" /></li>
+</ol>
+</td>
+</table>
+</form>    
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "channels/channels.html" %}
+{% load url from future %}
+
+{% comment %}
+
+Main page for Channels
+
+{% endcomment %}
+
+{% block title %}
+Communications Channels
+{% endblock %}
+
+{% block content %}
+<h2><center>Your Communications Channels: </center></h2>
+<table border="0" width="100%">
+<tr>
+	<td>Combobox Go</td>
+	<td><a href="{% url 'sandbox' %}">Channel Sandbox</a></td>
+	<td><a href="{% url 'addchannel' %}">Add a Channel</a></td>
+</tr>
+</table>
+{% if channeldata %}
+	<table class="table table-striped table-condensed table-bordered" width="100%" border="1">
+	<tr>
+		<th>Channel</th>
+		<th>Type</th>
+		<th>API</th>
+		<th>Members</th>
+		<th>Last Upload</th>
+		<th>Details</th>
+	</tr>
+	{% for row in channeldata.channel_list %}
+		<tr>
+			<td>{{ row.name }}</td>
+			<td>{{ row.type }}</td>
+			<td>{{ row.api }}</td>
+			<td>{{ row.nummembers}}</td>
+			<td>{{ row.lastupload }}</td>
+			<td>{{ row.details }}</td>
+		</tr>
+	{% endfor %}
+	</table>
+{% else %}
+	<p>You don't own any channels yet.</p>
+{% endif %}
+
+{% endblock %}

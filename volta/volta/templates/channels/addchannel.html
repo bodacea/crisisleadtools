@@ -1,0 +1,29 @@
+{% extends "channels/channels.html" %}
+{% load url from future %}
+
+{% comment %}
+
+Add a channel
+
+{% endcomment %}
+
+{% block title %}
+Add Channel
+{% endblock %}
+
+{% block content %}
+<h2>Add a Channel</h2>
+
+<form enctype="multipart/form-data" method="post" action="{% url 'addchannel' %}" method="post">{% csrf_token %}
+<ol>
+<li>Channel name: {{ form.channelname }}</li><br>
+<li>Channel type: {{ form.channeltype }}</li><br>
+<li>File containing a list of channel members (optional): {{ form.membersfile }}</li><br>
+<li>Does a remote group exists that corresponds to this channel? {{ form.remoteexists }} </li><br>
+<li>If it doesn't exist, would you like to create it? {{ form.createremote }} </li><br>
+<li>What's the remote group's name (skype group name,ning group id etc)? {{ form.remotename }} </li><br>
+<li>Then press this button: <input type="submit" value="Add Channel" /></li>
+</ol>
+</form>
+
+{% endblock %}

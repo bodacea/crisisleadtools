@@ -1,0 +1,32 @@
+{% if results %}
+	<h2>Friend requests sent</h2>
+	You've sent friend invites to these people:
+	<table border="1">
+	<tr>
+	<th>Skype id</th>
+	</tr>
+	{% for pers in results.newbuddies %}
+		<tr>
+			<td>{{ pers }}</td>
+		</tr>
+	{% endfor %}
+	</table>
+	
+	<p>You used this message in the friend request:</p>
+	<p>{% results.message %}</p>
+	
+	<p>These people were already you friends</p>
+	<table border="1">
+	<tr>
+	<th>Skype id</th>
+	</tr>
+	{% for pers in results.oldbuddies %}
+		<tr>
+			<td>{{ pers }}</td>
+		</tr>
+	{% endfor %}
+	</table>
+	
+{% else %}
+	<p>No data is available.</p>
+{% endif %}

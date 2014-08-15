@@ -1,0 +1,61 @@
+{% extends "channels/channels.html" %}
+{% load url from future %}
+
+{% comment %}
+
+Channel
+
+{% endcomment %}
+
+{% block title %}
+Channel {{ data.channel.name }}
+{% endblock %}
+
+{% block content %}
+<table border="1">
+	<tr>
+		<td>Belongs to group: {{ data.channel.group }}</td>
+		<td>Administrator: {{ data.channel.owner }}</td>
+		<td>Remote name: {{ data.channel.remote_name }}</td>
+	</tr>
+</table>
+
+Channel members:
+<table border="0" width="100%">
+<tr>
+	<td>Combobox</td>
+	<td>Add new members</td>
+	<td>Search for... in Combobox icon</td>
+</tr>
+</table>
+
+{% if data.channel.members %}
+	<table class="table table-striped table-condensed table-bordered">
+	<tr>
+		<th>Name</th>
+		<th>SkypeId</th>
+		<th>NingId</th>
+		<th>Googleid</th>
+		<th>Email</th>
+		<th>Membership</th>
+		<th>Joined</th>
+		<th>Details</th>
+	</tr>
+	{% for row in channeldata.members %}
+		<tr>
+			<td>{{ member.name }}</td>
+			<td>{{ member.skypeid }}</td>
+			<td>{{ member.ningid }}</td>
+			<td>{{ member.googleid }}</td>
+			<td>{{ member.email }}</td>
+			<td>{{ member.membership }}</td>
+			<td>{{ member.joined }}</td>
+			<td>{{ member.details }}</td>
+		</tr>
+	{% endfor %}
+	</table>
+{% else %}
+	<p>This channel doesn't have any members yet.</p>
+{% endif %}
+
+{% endblock %}
